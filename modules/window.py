@@ -1,6 +1,6 @@
 import PyQt6.QtCore as core
 import PyQt6.QtWidgets as widgets
-
+import PyQt6.QtGui as gui
 from .app import application
 from .left_container import LeftContainer
 from .weather_container import WeatherContainer
@@ -42,5 +42,20 @@ class MainWindow(widgets.QMainWindow):
         center_widget_layout.addWidget(self.LEFT_CONTAINER)
         center_widget_layout.addWidget(self.WEATHER_CONTAINER)
 
+    def mousePressEvent(self, event: gui.QMouseEvent):
+        if event.button() == core.Qt.MouseButton.LeftButton:
+            print("LeftButton")
+    
+    def mouseMoveEvent(self, event: gui.QMouseEvent):
+        position = event.position()
+        # print(position.toPoint())
+
+    def mouseReleaseEvent(self, event: gui.QMouseEvent):
+        print(event.button())
+
+    def keyPressEvent(self, event: gui.QKeyEvent):
+        if event.key() == core.Qt.Key.Key_Return or event.key() == core.Qt.Key.Key_Enter:
+            print("re")
+        
 
 main_window = MainWindow()
