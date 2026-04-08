@@ -8,7 +8,6 @@ class WeatherContainer(widgets.QFrame):
         self.setFixedSize(828, 800)
         self.setStyleSheet("background-color: cyan")
         
-        # Женя, создать вертикальный лейаут для WEatherContainer, прикрепить его к нему
         self.WEATHER_CONTEINER_LAYOUT = widgets.QVBoxLayout(self)
         self.setLayout(self.WEATHER_CONTEINER_LAYOUT)
         

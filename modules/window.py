@@ -41,21 +41,24 @@ class MainWindow(widgets.QMainWindow):
         
         center_widget_layout.addWidget(self.LEFT_CONTAINER)
         center_widget_layout.addWidget(self.WEATHER_CONTAINER)
-
-    def mousePressEvent(self, event: gui.QMouseEvent):
-        if event.button() == core.Qt.MouseButton.LeftButton:
-            print("LeftButton")
     
-    def mouseMoveEvent(self, event: gui.QMouseEvent):
-        position = event.position()
-        # print(position.toPoint())
-
-    def mouseReleaseEvent(self, event: gui.QMouseEvent):
-        print(event.button())
-
+    def mousePressEvent(self, event: gui.QMouseEvent):
+        if event.button() == core.Qt.MouseButton.RightButton:
+            print("Правая кнопка")
+    
     def keyPressEvent(self, event: gui.QKeyEvent):
-        if event.key() == core.Qt.Key.Key_Return or event.key() == core.Qt.Key.Key_Enter:
-            print("re")
+        if event.key() == core.Qt.Key.Key_K:
+            print(event.text())
+            print(event.key())      
+    
+    def mouseReleaseEvent(self, event: gui.QMouseEvent):
+        if event.button() == core.Qt.MouseButton.RightButton:
+            print("right: works")
+    
+    def keyReleaseEvent(self, event: gui.QKeyEvent):
+        if event.key() == core.Qt.Key.Key_K:
+            print(f"Key: {event.key()}")
+            print(f"Text: {event.text()}")
         
 
 main_window = MainWindow()

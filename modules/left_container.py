@@ -6,4 +6,3 @@ class LeftContainer(widgets.QFrame):
         
         self.setFixedSize(370, 800)
         self.setStyleSheet("background-color: red")
-
