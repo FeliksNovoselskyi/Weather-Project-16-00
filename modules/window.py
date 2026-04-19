@@ -3,20 +3,14 @@ import PyQt6.QtWidgets as widgets
 import PyQt6.QtGui as gui
 import requests
 import json
+from utils import  request
 
 from .app import application
 from .left_container import LeftContainer
 from .weather_container import WeatherContainer
 
 
-city_name = "Dnipro"
-API_key = "4d5a216bd76d84e8f7528002428d53ff"
-
-response = requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_key}")
-print(response.json())
-
-print("\n", json.dumps(response.json(), indent= 4))
-
+print(request("Kyiv"))
 
 
 class MainWindow(widgets.QMainWindow):
