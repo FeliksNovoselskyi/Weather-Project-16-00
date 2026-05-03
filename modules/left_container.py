@@ -58,6 +58,4 @@ class LeftContainer(widgets.QFrame):
         web_engine_view.setFixedSize(289,256)
         modal_layout.addWidget(web_engine_view)
         
-        web_engine_view.setHtml()
         
-         

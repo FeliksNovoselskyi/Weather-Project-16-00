@@ -1,9 +1,7 @@
 import PyQt6.QtCore as core
 import PyQt6.QtWidgets as widgets
 import PyQt6.QtGui as gui
-import requests
-import json
-from utils import  request
+from .header import Header
 
 from .app import application
 from .left_container import LeftContainer
@@ -14,6 +12,7 @@ class MainWindow(widgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.setWindowFlags(core.Qt.WindowType.FramelessWindowHint)
         
         window_width = 1200
         window_height = 800
@@ -29,10 +28,25 @@ class MainWindow(widgets.QMainWindow):
 
         self.setGeometry(center_x, center_y, window_width, window_height)
         self.setWindowTitle("Project")
+        
+        content_container = widgets.QFrame(parent = self)
+        content_layout = widgets.QVBoxLayout()
+        # Егор Столяров
+        content_layout.setSpacing(0)
+        # Максим. Указать contents margins
+        content_layout.setContentsMargins(0,0,0,0)
 
-        central_widget = widgets.QWidget(self)
-        central_widget.setFixedSize(1200,800  )
-
+        content_container.setLayout(content_layout)
+        
+        content_container.setFixedSize(window_width, window_height)
+        
+        header = Header(parent = content_container)
+        content_layout.addWidget(header)
+        
+        central_widget = widgets.QWidget(content_container)
+        central_widget.setFixedSize(1200,760  )
+        content_layout.addWidget(central_widget)
+        
         center_widget_layout = widgets.QHBoxLayout()
         center_widget_layout.setSpacing(0)
         center_widget_layout.setContentsMargins(0, 0, 0, 0)
@@ -66,3 +80,4 @@ class MainWindow(widgets.QMainWindow):
         
 
 main_window = MainWindow()
+

@@ -1,7 +1,6 @@
 import PyQt6.QtCore as core
 import PyQt6.QtWidgets as widgets
-from utils import request
-import json
+
 
 class WeatherContainer(widgets.QFrame):
     def __init__(self, parent):
@@ -26,18 +25,6 @@ class WeatherContainer(widgets.QFrame):
         
         self.CENTRAL_LAYOUT = widgets.QHBoxLayout(self.CETRAL_FRAME)
         self.CETRAL_FRAME.setLayout(self.CENTRAL_LAYOUT)
-        
-        response = request("Sydney")
-        
-        print(json.dumps(response, indent=4))
-        
-        if response["cod"] != 404:
-            label = widgets.QLabel(self.CETRAL_FRAME, text = str(response["main"]["temp"]))
-            self.CENTRAL_LAYOUT.addWidget(label)
-            
-            
-            city_label = widgets.QLabel(self.CETRAL_FRAME, text = str(response["name"]))
-            self.CENTRAL_LAYOUT.addWidget(city_label)
         
         self.FOOTER = widgets.QFrame(parent = self)
         self.FOOTER.setFixedSize(788, 364)
