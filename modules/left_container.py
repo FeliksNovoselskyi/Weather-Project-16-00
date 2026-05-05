@@ -1,9 +1,12 @@
 import PyQt6.QtWidgets as widgets
 import PyQt6.QtGui as QtGui
 import PyQt6.QtCore as core
-import folium 
 import PyQt6.QtWebEngineWidgets as WebEngine
+
+import folium 
 import io
+
+
 class LeftContainer(widgets.QFrame):
     def __init__(self, parent):
         super().__init__(parent)
@@ -58,4 +61,7 @@ class LeftContainer(widgets.QFrame):
         web_engine_view.setFixedSize(289,256)
         modal_layout.addWidget(web_engine_view)
         
+        html = data.getvalue().decode()
+        
+        web_engine_view.setHtml(html)
         
