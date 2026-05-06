@@ -31,9 +31,7 @@ class MainWindow(widgets.QMainWindow):
         
         content_container = widgets.QFrame(parent = self)
         content_layout = widgets.QVBoxLayout()
-        # Егор Столяров
         content_layout.setSpacing(0)
-        # Максим. Указать contents margins
         content_layout.setContentsMargins(0,0,0,0)
 
         content_container.setLayout(content_layout)
@@ -42,6 +40,7 @@ class MainWindow(widgets.QMainWindow):
         
         header = Header(parent = content_container)
         content_layout.addWidget(header)
+        
         
         central_widget = widgets.QWidget(content_container)
         central_widget.setFixedSize(1200,760  )

@@ -14,9 +14,37 @@ class LeftContainer(widgets.QFrame):
         self.setFixedSize(370, 800)
         self.setStyleSheet("background-color: red")
         
-        self.open_modal_button = widgets.QPushButton(parent = self, text = "Открыть окно")
-        self.open_modal_button.setGeometry(50,50,150,40)
-        self.open_modal_button.clicked.connect(self.open_modal)
+        self.LAYOUT = widgets.QVBoxLayout()
+        self.setLayout(self.LAYOUT)
+        
+        # Указываем родителя QScrollArea
+        scroll_area = widgets.QScrollArea(parent= self)
+        
+        # Указывает адаптивность размеров QScrollArea
+        scroll_area.setWidgetResizable(True)
+        
+        self.LAYOUT.addWidget(scroll_area)
+        
+        scroll_frame = widgets.QFrame(parent= scroll_area)
+        scroll_frame_layout = widgets.QVBoxLayout()
+        scroll_frame_layout.setAlignment(core.Qt.AlignmentFlag.AlignTop)
+        scroll_frame_layout.setSpacing(10)
+        scroll_frame.setLayout(scroll_frame_layout)
+        
+        # Создать леаут для скролл фрейма
+        
+        
+        scroll_area.setWidget(scroll_frame)
+        
+        for number in range(3):
+            card = widgets.QFrame(parent= scroll_frame )
+            card.setStyleSheet("background-color: gray; ")
+            card.setFixedSize(330, 90)
+            scroll_frame_layout.addWidget(card)
+        
+        # self.open_modal_button = widgets.QPushButton(parent = self, text = "Открыть окно")
+        # self.open_modal_button.setGeometry(50,50,150,40)
+        # self.open_modal_button.clicked.connect(self.open_modal)
 
     def open_modal(self):
         # Получаем главное окно (объект)
